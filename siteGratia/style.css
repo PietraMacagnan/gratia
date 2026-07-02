@@ -1,0 +1,833 @@
+/* ==========================================================================
+   DESIGN SYSTEM - GRATIA PLENA
+   Estilo: Catedral Gótica Medieval / Biblioteca Monástica
+   ========================================================================== */
+
+/* Importação de Fontes Adicionais caso necessário */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+    /* Paleta Claro (Pergaminho/Marfim/Madeira) */
+    --bg-pergaminho: #f5f2e9;
+    --bg-painel: rgba(255, 253, 248, 0.95);
+    --texto-principal: #2c221e;
+    --texto-secundario: #5a4b43;
+    --ouro-claro: #c9a646;
+    --ouro-escuro: #8f722a;
+    --borda-ouro: #d4af37;
+    --borda-suave: #e6dfcc;
+    --vermelho-liturgico: #8b0000;
+    --azul-mariano: #1c3b57;
+    --madeira-escura: #3b2f2f;
+
+    /* Transição de cores */
+    --transicao: all 0.3s ease;
+}
+
+/* Modo Escuro (Pedra/Catedral à noite/Madeira antiga) */
+body.dark-mode {
+    --bg-pergaminho: #171412;
+    --bg-painel: rgba(26, 22, 20, 0.96);
+    --texto-principal: #e8dfcc;
+    --texto-secundario: #bdae9c;
+    --ouro-claro: #e5c158;
+    --ouro-escuro: #b8962e;
+    --borda-ouro: #a88322;
+    --borda-suave: #2d2622;
+    --vermelho-liturgico: #a82323;
+    --azul-mariano: #315c82;
+    --madeira-escura: #0f0c0b;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-pergaminho);
+    color: var(--texto-principal);
+    font-family: 'EB Garamond', serif;
+    font-size: 1.25rem;
+    line-height: 1.7;
+    transition: var(--transicao);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* Textura de papel antigo simulada com ruído leve */
+    background-image: radial-gradient(rgba(0,0,0,0.03) 1px, transparent 0),
+                      radial-gradient(rgba(0,0,0,0.03) 1px, transparent 0);
+    background-size: 8px 8px;
+    background-position: 0 0, 4px 4px;
+}
+
+body.dark-mode {
+    background-image: radial-gradient(rgba(255,255,255,0.01) 1px, transparent 0),
+                      radial-gradient(rgba(255,255,255,0.01) 1px, transparent 0);
+}
+
+/* ==========================================================================
+   LAYOUT GERAL
+   ========================================================================== */
+
+#app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Topo do Portal */
+.portal-header {
+    text-align: center;
+    padding: 40px 20px 20px 20px;
+    border-bottom: 1px solid var(--borda-ouro);
+    background-color: var(--bg-painel);
+    position: relative;
+}
+
+.portal-header::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 7px;
+    background-color: var(--ouro-escuro);
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+}
+
+.portal-header h1 {
+    font-family: 'Cinzel Decorative', 'Cinzel', serif;
+    font-size: 2.8rem;
+    color: var(--ouro-escuro);
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+    margin-bottom: 5px;
+}
+
+body.dark-mode .portal-header h1 {
+    color: var(--ouro-claro);
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+}
+
+.portal-header .tagline {
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--texto-secundario);
+    margin-bottom: 15px;
+}
+
+/* Menu e Controles Rápidos no Topo */
+.top-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.control-btn {
+    background: transparent;
+    border: 1px solid var(--borda-ouro);
+    color: var(--ouro-escuro);
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    padding: 6px 14px;
+    cursor: pointer;
+    transition: var(--transicao);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+body.dark-mode .control-btn {
+    color: var(--ouro-claro);
+}
+
+.control-btn:hover {
+    background-color: var(--ouro-escuro);
+    color: #fff;
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+}
+
+/* Corpo Principal com Menu de Navegação */
+.portal-body {
+    display: flex;
+    flex: 1;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* Navegação Lateral */
+.portal-nav {
+    width: 280px;
+    flex-shrink: 0;
+    background-color: var(--bg-painel);
+    border: 1px solid var(--borda-suave);
+    border-top: 3px solid var(--borda-ouro);
+    padding: 20px 15px;
+    border-radius: 3px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    max-height: calc(100vh - 200px);
+    position: sticky;
+    top: 20px;
+    overflow-y: auto;
+}
+
+.nav-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: var(--texto-secundario);
+    text-align: center;
+    border-bottom: 1px double var(--borda-ouro);
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+    letter-spacing: 1.5px;
+}
+
+.nav-list {
+    list-style: none;
+}
+
+.nav-item {
+    margin-bottom: 5px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: var(--texto-principal);
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    border-radius: 2px;
+    transition: var(--transicao);
+    border-left: 2px solid transparent;
+}
+
+.nav-link:hover, .nav-link.active {
+    background-color: rgba(201, 166, 70, 0.1);
+    color: var(--ouro-escuro);
+    border-left: 2px solid var(--borda-ouro);
+    padding-left: 15px;
+}
+
+body.dark-mode .nav-link:hover, body.dark-mode .nav-link.active {
+    color: var(--ouro-claro);
+}
+
+.nav-icon {
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+
+/* Área de Conteúdo Principal */
+.portal-content {
+    flex: 1;
+    min-width: 0; /* evita estouro de flexbox */
+}
+
+/* Painel de Conteúdo */
+.content-panel {
+    background-color: var(--bg-painel);
+    border: 1px solid var(--borda-suave);
+    border-top: 4px solid var(--borda-ouro);
+    padding: 40px;
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    min-height: 500px;
+}
+
+/* Rodapé */
+.portal-footer {
+    text-align: center;
+    padding: 30px 20px;
+    border-top: 1px solid var(--borda-suave);
+    background-color: var(--bg-painel);
+    font-size: 0.95rem;
+    color: var(--texto-secundario);
+    margin-top: auto;
+}
+
+.portal-footer p {
+    margin-bottom: 5px;
+}
+
+.portal-footer .devotion {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    color: var(--ouro-escuro);
+}
+
+/* ==========================================================================
+   TIPOGRAFIA E ELEMENTOS GRÁFICOS
+   ========================================================================== */
+
+h2.section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 2.2rem;
+    color: var(--ouro-escuro);
+    border-bottom: 1px solid var(--borda-ouro);
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+    position: relative;
+}
+
+body.dark-mode h2.section-title {
+    color: var(--ouro-claro);
+}
+
+h2.section-title::after {
+    content: '❖';
+    position: absolute;
+    bottom: -11px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--bg-painel);
+    padding: 0 12px;
+    color: var(--ouro-escuro);
+    font-size: 0.9rem;
+}
+
+body.dark-mode h2.section-title::after {
+    color: var(--ouro-claro);
+}
+
+h3.subsection-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: var(--texto-principal);
+    margin-top: 25px;
+    margin-bottom: 15px;
+    border-bottom: 1px double var(--borda-suave);
+    padding-bottom: 5px;
+}
+
+/* Parágrafos e Capitulares */
+p {
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+/* Capitular (Drop Cap) Sóbria */
+.capitular::first-letter {
+    font-family: 'Cinzel Decorative', 'Cinzel', serif;
+    float: left;
+    font-size: 3.8rem;
+    line-height: 0.85;
+    padding-top: 4px;
+    padding-right: 8px;
+    padding-left: 3px;
+    color: var(--ouro-escuro);
+    font-weight: bold;
+}
+
+body.dark-mode .capitular::first-letter {
+    color: var(--ouro-claro);
+}
+
+/* Citação / Versículo em Destaque */
+.citacao-destaque {
+    border-left: 3px solid var(--borda-ouro);
+    padding-left: 20px;
+    margin: 30px 0;
+    font-style: italic;
+    color: var(--texto-secundario);
+    position: relative;
+    background-color: rgba(201, 166, 70, 0.04);
+    padding: 20px 25px;
+    border-radius: 0 4px 4px 0;
+}
+
+.citacao-destaque .autor-ref {
+    display: block;
+    margin-top: 10px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    font-style: normal;
+    text-align: right;
+    color: var(--ouro-escuro);
+}
+
+body.dark-mode .citacao-destaque .autor-ref {
+    color: var(--ouro-claro);
+}
+
+/* Divisor Decorativo Sutil */
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--borda-ouro), transparent);
+}
+
+.divider span {
+    margin: 0 15px;
+    color: var(--ouro-escuro);
+    font-size: 0.8rem;
+}
+
+/* ==========================================================================
+   SEÇÕES DO PORTAL
+   ========================================================================== */
+
+/* PÁGINA INICIAL */
+.home-intro {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.home-intro p {
+    text-align: center;
+    font-size: 1.35rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 1px solid var(--borda-suave);
+    padding: 25px;
+    border-radius: 3px;
+    transition: var(--transicao);
+}
+
+body.dark-mode .card {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: var(--borda-ouro);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+}
+
+.card h3 {
+    font-family: 'Cinzel', serif;
+    color: var(--ouro-escuro);
+    margin-bottom: 12px;
+    font-size: 1.25rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    padding-bottom: 6px;
+}
+
+body.dark-mode .card h3 {
+    color: var(--ouro-claro);
+}
+
+.card p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.card-link {
+    color: var(--ouro-escuro);
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+body.dark-mode .card-link {
+    color: var(--ouro-claro);
+}
+
+/* LITURGIA DIÁRIA */
+.liturgia-meta {
+    font-family: 'Cinzel', serif;
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--ouro-escuro);
+    margin-bottom: 25px;
+}
+
+.liturgia-leitura {
+    margin-bottom: 35px;
+    background-color: rgba(255,255,255,0.4);
+    padding: 25px;
+    border-radius: 4px;
+    border: 1px solid var(--borda-suave);
+}
+
+body.dark-mode .liturgia-leitura {
+    background-color: rgba(0,0,0,0.15);
+}
+
+.liturgia-leitura h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    color: var(--ouro-escuro);
+    margin-bottom: 5px;
+}
+
+body.dark-mode .liturgia-leitura h4 {
+    color: var(--ouro-claro);
+}
+
+.liturgia-ref {
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    color: var(--texto-secundario);
+    margin-bottom: 15px;
+}
+
+/* BÍBLIA */
+.biblia-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.select-classic {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px;
+    background-color: var(--bg-painel);
+    border: 1px solid var(--borda-suave);
+    color: var(--texto-principal);
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    border-radius: 2px;
+}
+
+.select-classic:focus {
+    outline: none;
+    border-color: var(--borda-ouro);
+}
+
+.temas-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 35px;
+}
+
+.tema-tag {
+    background-color: rgba(201, 166, 70, 0.08);
+    border: 1px solid var(--borda-suave);
+    color: var(--texto-principal);
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    padding: 5px 12px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: var(--transicao);
+}
+
+.tema-tag:hover, .tema-tag.active {
+    background-color: var(--ouro-escuro);
+    color: #fff;
+    border-color: var(--ouro-escuro);
+}
+
+/* LINHA DO TEMPO DA HISTÓRIA DA IGREJA */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 40px auto;
+    padding-left: 30px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 9px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--borda-ouro);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.timeline-badge {
+    position: absolute;
+    left: -30px;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--bg-pergaminho);
+    border: 3px solid var(--borda-ouro);
+}
+
+.timeline-epoch {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: var(--ouro-escuro);
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+body.dark-mode .timeline-epoch {
+    color: var(--ouro-claro);
+}
+
+.timeline-content {
+    background-color: rgba(255,255,255,0.4);
+    border: 1px solid var(--borda-suave);
+    padding: 20px;
+    border-radius: 3px;
+}
+
+body.dark-mode .timeline-content {
+    background-color: rgba(0,0,0,0.15);
+}
+
+/* ORAÇÕES E BIBLIOTECA */
+.filter-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--borda-suave);
+    padding-bottom: 10px;
+}
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    color: var(--texto-secundario);
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: var(--transicao);
+    position: relative;
+}
+
+.tab-btn:hover {
+    color: var(--ouro-escuro);
+}
+
+.tab-btn.active {
+    color: var(--ouro-escuro);
+    font-weight: bold;
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -11px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--borda-ouro);
+}
+
+body.dark-mode .tab-btn:hover, body.dark-mode .tab-btn.active {
+    color: var(--ouro-claro);
+}
+
+.list-item {
+    border-bottom: 1px solid var(--borda-suave);
+    padding: 15px 0;
+}
+
+.list-item:last-child {
+    border-bottom: none;
+}
+
+.list-item h4 {
+    font-family: 'Cinzel', serif;
+    color: var(--ouro-escuro);
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+body.dark-mode .list-item h4 {
+    color: var(--ouro-claro);
+}
+
+/* BARRA DE PESQUISA */
+.search-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 12px 18px;
+    border: 1px solid var(--borda-suave);
+    background-color: var(--bg-painel);
+    color: var(--texto-principal);
+    font-family: 'EB Garamond', serif;
+    font-size: 1.25rem;
+    border-radius: 2px;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--borda-ouro);
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.2);
+}
+
+/* WIDGET DO CANTO GREGORIANO */
+.audio-player-widget {
+    background-color: var(--bg-painel);
+    border: 1px solid var(--borda-suave);
+    border-radius: 4px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 15px;
+    width: 100%;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.audio-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.audio-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    color: var(--ouro-escuro);
+    font-weight: bold;
+}
+
+body.dark-mode .audio-title {
+    color: var(--ouro-claro);
+}
+
+.audio-sub {
+    font-size: 0.75rem;
+    color: var(--texto-secundario);
+}
+
+.audio-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.play-btn {
+    background-color: var(--ouro-escuro);
+    color: #fff;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    transition: var(--transicao);
+}
+
+.play-btn:hover {
+    background-color: var(--ouro-claro);
+    transform: scale(1.05);
+}
+
+/* ==========================================================================
+   ELEMENTOS DE ANIMAÇÃO DE SEÇÃO
+   ========================================================================== */
+
+.section-panel {
+    display: none;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.section-panel.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+
+@media (max-width: 992px) {
+    .portal-body {
+        flex-direction: column;
+    }
+
+    .portal-nav {
+        width: 100%;
+        position: static;
+        max-height: none;
+    }
+
+    .nav-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        justify-content: center;
+    }
+
+    .nav-item {
+        margin-bottom: 0;
+    }
+
+    .nav-link {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+        border-left: none;
+        border-bottom: 2px solid transparent;
+    }
+
+    .nav-link:hover, .nav-link.active {
+        border-left: none;
+        border-bottom: 2px solid var(--borda-ouro);
+        padding-left: 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    .portal-header h1 {
+        font-size: 2rem;
+    }
+
+    .content-panel {
+        padding: 20px;
+    }
+
+    h2.section-title {
+        font-size: 1.7rem;
+    }
+}

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Gratia Plena — Portal de Evangelização, Formação e Oração Católica</title>
+    <meta name="description" content="Plataforma dedicada à evangelização católica, conduzindo as almas a Jesus Cristo através da Eucaristia, Sagrada Escritura, Doutrina, Tradição e Devoção Mariana.">
+    <meta name="keywords" content="Catolicismo, Evangelização, Bíblia, Liturgia Diária, Eucaristia, Virgem Maria, Santos, Padres da Igreja, Catecismo, Orações, Doutrina">
+    
+    <!-- Open Graph (Redes Sociais) -->
+    <meta property="og:title" content="Gratia Plena — Fé, Tradição e Oração Católica">
+    <meta property="og:description" content="Aproxime-se de Cristo por meio do estudo bíblico, da doutrina oficial da Igreja Católica, das biografias dos Santos e da vida de oração.">
+    <meta property="og:type" content="website">
+    
+    <!-- Fontes Estilo Catedral -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="app-container">
+        
+        <!-- CABEÇALHO DO PORTAL -->
+        <header class="portal-header">
+            <h1 id="portal-logo">Gratia Plena</h1>
+            <p class="tagline">“Ave Maria, gratia plena, Dominus tecum”</p>
+            
+            <div class="top-controls">
+                <button id="theme-toggle" class="control-btn" aria-label="Alternar modo de cores">
+                    <span class="nav-icon">👁</span> Tema Escuro
+                </button>
+                
+                <!-- REPRODUTOR DE CANTO GREGORIANO (OPCIONAL E SEM AUTOPLAY) -->
+                <div class="audio-player-widget">
+                    <div class="audio-info">
+                        <span class="audio-title">Canto Gregoriano</span>
+                        <span class="audio-sub">Salve Regina (Instrumental)</span>
+                    </div>
+                    <div class="audio-controls">
+                        <button id="audio-play-btn" class="play-btn" aria-label="Tocar canto gregoriano">▶</button>
+                    </div>
+                    <audio id="gregorian-audio" loop preload="none">
+                        <!-- Fonte de áudio segura e livre de direitos autorais / instrumental gregoriano -->
+                        <source src="https://assets.mixkit.co/active_storage/sfx/2568/2568-84.wav" type="audio/wav">
+                        <!-- Fallback para áudio alternativo se necessário -->
+                    </audio>
+                </div>
+            </div>
+        </header>
+
+        <!-- CORPO DO PORTAL (NAVEGAÇÃO + CONTEÚDOS) -->
+        <div class="portal-body">
+            
+            <!-- MENU LATERAL RESPONSIVO -->
+            <nav class="portal-nav" aria-label="Menu Principal">
+                <h2 class="nav-title">Biblioteca Sacra</h2>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#inicio" class="nav-link active" data-section="inicio"><span class="nav-icon">☩</span> Início</a></li>
+                    <li class="nav-item"><a href="#liturgia" class="nav-link" data-section="liturgia"><span class="nav-icon">📖</span> Liturgia Diária</a></li>
+                    <li class="nav-item"><a href="#biblia" class="nav-link" data-section="biblia"><span class="nav-icon">📜</span> Bíblia Sagrada</a></li>
+                    <li class="nav-item"><a href="#eucaristia" class="nav-link" data-section="eucaristia"><span class="nav-icon">🍷</span> Eucaristia</a></li>
+                    <li class="nav-item"><a href="#maria" class="nav-link" data-section="maria"><span class="nav-icon">👑</span> Virgem Maria</a></li>
+                    <li class="nav-item"><a href="#santos" class="nav-link" data-section="santos"><span class="nav-icon">⚜</span> Galeria dos Santos</a></li>
+                    <li class="nav-item"><a href="#padres" class="nav-link" data-section="padres"><span class="nav-icon">⛪</span> Padres da Igreja</a></li>
+                    <li class="nav-item"><a href="#doutrina" class="nav-link" data-section="doutrina"><span class="nav-icon">🛡</span> Doutrina Católica</a></li>
+                    <li class="nav-item"><a href="#historia" class="nav-link" data-section="historia"><span class="nav-icon">⏳</span> História da Igreja</a></li>
+                    <li class="nav-item"><a href="#oracoes" class="nav-link" data-section="oracoes"><span class="nav-icon">🙏</span> Orações</a></li>
+                    <li class="nav-item"><a href="#biblioteca" class="nav-link" data-section="biblioteca"><span class="nav-icon">📚</span> Biblioteca</a></li>
+                    <li class="nav-item"><a href="#blog" class="nav-link" data-section="blog"><span class="nav-icon">🖋</span> Artigos & Blog</a></li>
+                    <li class="nav-item"><a href="#pesquisa" class="nav-link" data-section="pesquisa"><span class="nav-icon">🔍</span> Pesquisa</a></li>
+                </ul>
+            </nav>
+
+            <!-- PAINEL DE CONTEÚDO DINÂMICO -->
+            <main class="portal-content" id="main-content">
+                
+                <!-- 1. INÍCIO -->
+                <section id="sec-inicio" class="section-panel active">
+                    <div class="content-panel">
+                        <div class="home-intro">
+                            <h2 class="section-title">Bem-Vindo ao Gratia Plena</h2>
+                            <p class="capitular">Este portal foi edificado para ser um santuário digital de espiritualidade, oração e formação católica fiel ao Sagrado Magistério. Inspirado na solenidade das antigas catedrais e na tradição dos mosteiros medievais, convidamos você a contemplar a Verdade, a Bondade e a Beleza da fé cristã.</p>
+                        </div>
+                        
+                        <div class="citacao-destaque">
+                            “Eu sou o pão vivo que desceu do céu; se alguém comer deste pão, viverá para sempre; e o pão que eu darei é a minha carne para a vida do mundo.”
+                            <span class="autor-ref">São João 6, 51</span>
+                        </div>
+                        
+                        <div class="divider"><span>❖</span></div>
+                        
+                        <h3 class="subsection-title">Destaques da Fé</h3>
+                        <div class="cards-grid">
+                            <div class="card">
+                                <h3>Liturgia Diária</h3>
+                                <p>Alimente a sua alma com as leituras, o Salmo e o Evangelho proclamados na Santa Missa de hoje.</p>
+                                <a href="#liturgia" class="card-link" data-target="liturgia">Meditar a Liturgia →</a>
+                            </div>
+                            <div class="card">
+                                <h3>A Presença Real</h3>
+                                <p>Compreenda o mistério sublime do Santíssimo Sacramento do Altar e os Milagres Eucarísticos na história.</p>
+                                <a href="#eucaristia" class="card-link" data-target="eucaristia">Ir para Eucaristia →</a>
+                            </div>
+                            <div class="card">
+                                <h3>Devocionário</h3>
+                                <p>Encontre orações para a manhã, noite, o Santo Rosário e novenas tradicionais da Igreja.</p>
+                                <a href="#oracoes" class="card-link" data-target="oracoes">Acessar Orações →</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. LITURGIA DIÁRIA -->
+                <section id="sec-liturgia" class="section-panel">
+                    <div class="content-panel">
+                        <h2 class="section-title">Liturgia do Dia</h2>
+                        <div class="liturgia-meta">
+                            <span>Data: </span><strong id="lit-data">Carregando data...</strong>
+                        </div>
+                        
+                        <div id="liturgia-conteudo">
+                            <!-- Primeira Leitura -->
+                            <div class="liturgia-leitura">
+                                <h4>Primeira Leitura</h4>
+                                <div class="liturgia-ref" id="lit-ref-leitura1">...</div>
+                                <p class="capitular" id="lit-texto-leitura1">Buscando as leituras sagradas do dia...</p>
+                            </div>
+                            
+                            <!-- Segunda Leitura (Se houver) -->
+                            <div class="liturgia-leitura" id="lit-bloco-leitura2" style="display: none;">
+                                <h4>Segunda Leitura</h4>
+                                <div class="liturgia-ref" id="lit-ref-leitura2">...</div>
+                                <p id="lit-texto-leitura2">...</p>
+                            </div>
+                            
+                            <!-- Salmo -->
+                            <div class="liturgia-leitura">
+                                <h4>Salmo Responsorial</h4>
+                                <div class="liturgia-ref" id="lit-ref-salmo">...</div>
+                                <p id="lit-texto-salmo">...</p>
+                            </div>
+                            
+                            <!-- Evangelho -->
+                            <div class="liturgia-leitura">
+                                <h4>Evangelho</h4>
+                                <div class="liturgia-ref" id="lit-ref-evangelho">...</div>
+                                <p id="lit-texto-evangelho">...</p>
+                            </div>
+                            
+                            <!-- Reflexão Espiritual -->
+                            <div class="liturgia-leitura" style="border-top: 2px solid var(--borda-ouro);">
+                                <h4>Reflexão Devocional</h4>
+                                <p id="lit-reflexao">Que as palavras do Santo Evangelho apaguem os nossos pecados. A liturgia de hoje nos convida a fixar o olhar no mistério pascal de Cristo, fortalecendo nossa fidelidade aos sacramentos e vivendo a caridade operosa cotidiana.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. BÍBLIA SAGRADA -->
+                <section id="sec-biblia" class="section-panel">
+                    <div class="content-panel">
+                        <h2 class="section-title">Bíblia Sagrada</h2>
+                        
+                        <div class="biblia-controls">
+                            <select id="biblia-livro-select" class="select-classic" aria-label="Selecione o Livro"></select>
+                            <select id="biblia-cap-select" class="select-classic" aria-label="Selecione o Capítulo"></select>
+                        </div>
+                        
+                        <div id="biblia-texto-container" class="liturgia-leitura">
+                            <h4 id="biblia-titulo-leitura">Gênesis 1</h4>
+                            <p class="capitular" id="biblia-texto-conteudo">No princípio, criou Deus os céus e a terra. A terra estava informe e vazia; as trevas cobriam o abismo...</p>
+                        </div>
+                        
+                        <div class="divider"><span>Versículos por Temas</span></div>
+                        <div class="temas-container" id="biblia-temas-container"></div>
+                        <div id="biblia-versiculo-tema-resultado" class="citacao-destaque" style="display: none;"></div>
+                    </div>
+                </section>
+
+                <!-- 4. EUCARISTIA -->
+                <section id="sec-eucaristia" class="section-panel">
+                    <div class="content-panel" id="eucaristia-conteudo-dinamico"></div>
+                </section>
+
+                <!-- 5. VIRGEM MARIA -->
+                <section id="sec-maria" class="section-panel">
+                    <div class="content-panel" id="maria-conteudo-dinamico"></div>
+                </section>
+
+                <!-- 6. GALERIA DOS SANTOS -->
+                <section id="sec-santos" class="section-panel">
+                    <div class="content-panel" id="santos-conteudo-dinamico"></div>
+                </section>
+
+                <!-- 7. PADRES DA IGREJA -->
+                <section id="sec-padres" class="section-panel">
+                    <div class="content-panel" id="padres-conteudo-dinamico"></div>
+                </section>
+
+                <!-- 8. DOUTRINA CATÓLICA -->
+                <section id="sec-doutrina" class="section-panel">
+                    <div class="content-panel" id="doutrina-conteudo-dinamico"></div>
+                </section>
+
+                <!-- 9. HISTÓRIA DA IGREJA -->
+                <section id="sec-historia" class="section-panel">
+                    <div class="content-panel">
+                        <h2 class="section-title">História da Igreja</h2>
+                        <p class="capitular">Nesta linha do tempo histórica, contemple a promessa do Salvador que se cumpre pelos séculos: "As portas do inferno não prevalecerão contra ela". Acompanhe a trajetória de fé, concílios e missões desde os apóstolos.</p>
+                        
+                        <div class="timeline" id="historia-timeline-container">
+                            <!-- Inserção Dinâmica da Linha do Tempo -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 10. ORAÇÕES -->
+                <section id="sec-oracoes" class="section-panel">
+                    <div class="content-panel">
+                        <h2 class="section-title">Devocionário e Orações</h2>
+                        <div class="filter-tabs" id="oracoes-tabs"></div>
+                        <div id="oracoes-lista-container"></div>
+                    </div>
+                </section>
+
+                <!-- 11. BIBLIOTECA -->
+                <section id="sec-biblioteca" class="section-panel">
+                    <div class="content-panel">
+                        <h2 class="section-title">Biblioteca do Magistério</h2>
+                        <div class="filter-tabs" id="biblioteca-tabs"></div>
+                        <div id="biblioteca-lista-container"></div>
+                    </div>
+                </section>
+
+                <!-- 12. BLOG E ARTIGOS -->
+                <section id="sec-blog" class="section-panel">
+                    <div class="content-panel">
+                        <h2 class="section-title">Artigos e Blog</h2>
+                        <div id="blog-lista-container"></div>
+                    </div>
+                </section>
+
+                <!-- 13. PESQUISA -->
+                <section id="sec-pesquisa" class="section-panel">
+                    <div class="content-panel">
+                        <h2 class="section-title">Pesquisa Unificada</h2>
+                        <div class="search-box">
+                            <input type="text" id="campo-pesquisa" class="search-input" placeholder="Digite versículos, santos, orações, temas ou palavras-chave..." aria-label="Termo para pesquisa">
+                        </div>
+                        <div id="resultados-pesquisa">
+                            <p style="text-align: center; color: var(--texto-secundario);">Digite pelo menos 3 caracteres para iniciar a busca.</p>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+
+        </div>
+
+        <!-- RODAPÉ DO PORTAL -->
+        <footer class="portal-footer">
+            <p>&copy; 2026 Gratia Plena. Ad maiorem Dei gloriam.</p>
+            <p class="devotion">Desenvolvido em plena fidelidade à Doutrina da Santa Igreja Católica Apostólica Romana.</p>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
